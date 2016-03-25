@@ -1,0 +1,53 @@
+
+
+#include <iostream>
+#include <stack>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    stack<char> iStack;
+    
+    string userExpression;
+    bool lFound = false;
+    
+    cout << "Enter expression: ";
+    getline(cin, userExpression);
+    cout << "------------------------" << endl;
+    
+    for (int i = 0; i < userExpression.length(); i++)
+    {
+        
+        if ( userExpression[i] == '(' )
+        {
+            cout << "[" << i << "]Debug(1): Pushing --> " << userExpression[i] << endl;
+            iStack.push(userExpression[i]);
+            lFound = true;
+            cout << "[" << i << "]Debug(1): Stack empty --> " << boolalpha << iStack.empty() << endl;
+            cout << "[" << i << "]Debug(1): lFound --> " << boolalpha << lFound << endl << endl;
+        }
+        
+        else if ( userExpression[i] == ')' && !iStack.empty() && lFound)
+        {
+            cout << "[" << i << "]Debug(2): Popping --> " << userExpression[i] << endl;
+            iStack.pop();
+            //lFound = false;
+            cout << "[" << i << "]Debug(2): Stack empty --> " << boolalpha << iStack.empty() << endl;
+            cout << "[" << i << "]Debug(2): lFound --> " << boolalpha << lFound << endl << endl;
+        }
+    
+    }
+    
+    cout << "Debug(3): Stack empty --> " << boolalpha << iStack.empty() << endl;
+    cout << "Debug(3): lFound --> " << boolalpha << lFound << endl << endl;
+    
+    if ( iStack.empty() && lFound )
+        cout << "Balanced Parenthesis " << endl;
+    
+    else
+        cout << "Unbalanced Parenthesis " << endl;
+    
+    return 0;
+}
