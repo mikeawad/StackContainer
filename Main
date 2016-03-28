@@ -9,6 +9,65 @@ using namespace std;
 
 int main()
 {
+#include <iostream>
+#include <stack>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    stack<char> iStack;
+
+    string userExpression;
+    bool lFound = false,
+         malForm = false;
+
+    cout << "Enter expression: ";
+    getline(cin, userExpression);
+    cout << "------------------------" << endl;
+
+    for (int i = 0; i < userExpression.length(); i++)
+    {
+
+        if ( userExpression[i] == '(' )
+        {
+            //cout << "[" << i << "]Debug(a): Pushing --> " << userExpression[i] << endl;
+            iStack.push(userExpression[i]);
+            lFound = true;
+            //cout << "[" << i << "]Debug(a): Stack empty --> " << boolalpha << iStack.empty() << endl;
+            //cout << "[" << i << "]Debug(a): lFound --> " << boolalpha << lFound << endl << endl;
+        }
+
+        else if (userExpression[i] == ')' && iStack.empty())
+                    {
+                        //cout << "Running ... ... .." << endl;
+                        malForm = true;
+                        break;
+                    }
+
+        else if ( userExpression[i] == ')' && !iStack.empty() && lFound)
+        {
+            //cout << "[" << i << "]Debug(b): Popping --> " << userExpression[i] << endl;
+            iStack.pop();
+            //cout << "[" << i << "]Debug(b): Stack empty --> " << boolalpha << iStack.empty() << endl;
+            //cout << "[" << i << "]Debug(b): lFound --> " << boolalpha << lFound << endl << endl;
+        }
+
+    }
+
+    //cout << "Debug(c): Stack empty --> " << boolalpha << iStack.empty() << endl;
+    //cout << "Debug(c): lFound --> " << boolalpha << lFound << endl << endl;
+
+    if ( iStack.empty() && lFound && !malForm )
+        cout << "Balanced Parenthesis " << endl;
+
+    else
+        cout << "Unbalanced Parenthesis " << endl;
+
+    return 0;
+}
+
     stack<char> iStack;
     string userExpression;
     bool lFound = false;
