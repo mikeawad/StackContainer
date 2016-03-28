@@ -22,26 +22,26 @@ int main()
         
         if ( userExpression[i] == '(' )
         {
-            cout << "[" << i << "]Debug(1): Pushing --> " << userExpression[i] << endl;
+            cout << "[" << i << "]Debug(a): Pushing --> " << userExpression[i] << endl;
             iStack.push(userExpression[i]);
             lFound = true;
-            cout << "[" << i << "]Debug(1): Stack empty --> " << boolalpha << iStack.empty() << endl;
-            cout << "[" << i << "]Debug(1): lFound --> " << boolalpha << lFound << endl << endl;
+            cout << "[" << i << "]Debug(a): Stack empty --> " << boolalpha << iStack.empty() << endl;
+            cout << "[" << i << "]Debug(a): lFound --> " << boolalpha << lFound << endl << endl;
         }
         
         else if ( userExpression[i] == ')' && !iStack.empty() && lFound)
         {
-            cout << "[" << i << "]Debug(2): Popping --> " << userExpression[i] << endl;
+            cout << "[" << i << "]Debug(b): Popping --> " << userExpression[i] << endl;
             iStack.pop();
             //lFound = false;
-            cout << "[" << i << "]Debug(2): Stack empty --> " << boolalpha << iStack.empty() << endl;
-            cout << "[" << i << "]Debug(2): lFound --> " << boolalpha << lFound << endl << endl;
+            cout << "[" << i << "]Debug(b): Stack empty --> " << boolalpha << iStack.empty() << endl;
+            cout << "[" << i << "]Debug(b): lFound --> " << boolalpha << lFound << endl << endl;
         }
     
     }
     
-    cout << "Debug(3): Stack empty --> " << boolalpha << iStack.empty() << endl;
-    cout << "Debug(3): lFound --> " << boolalpha << lFound << endl << endl;
+    cout << "Debug(c): Stack empty --> " << boolalpha << iStack.empty() << endl;
+    cout << "Debug(c): lFound --> " << boolalpha << lFound << endl << endl;
     
     if ( iStack.empty() && lFound )
         cout << "Balanced Parenthesis " << endl;
